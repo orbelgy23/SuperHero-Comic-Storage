@@ -59,7 +59,7 @@ namespace BlazorApp2.Server.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<SuperHero>> GetSingleSuperHeroe(int id)
+        public async Task<ActionResult<SuperHero>> GetSingleSuperHero(int id)
         {
             var hero = await _context.SuperHeroes
                 .Include(h => h.Comic)
@@ -86,7 +86,7 @@ namespace BlazorApp2.Server.Controllers
             return await _context.SuperHeroes.Include(h => h.Comic).ToListAsync();
         }
 
-        [HttpPut] // Uses for Update
+        [HttpPut("{id}")] // Uses for Update
         public async Task<ActionResult<List<SuperHero>>> UpdateSuperHero(SuperHero hero, int id)
         {
             var dbHero = await _context.SuperHeroes
